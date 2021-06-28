@@ -30,7 +30,7 @@
            <div class="card-header">
               <div class="card-title">
                  <h3 class="card-label">
-                    Google Calendar
+                    Kalender Reservasi
                 </h3>
             </div>
             <div class="card-toolbar">
