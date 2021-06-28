@@ -12,14 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('login');
+})->name('homepage');
 
-Route::get('/', 'PagesController@index');
-routeController('menu', 'MenuController');
-routeController('table', 'TableController');
-routeController('order', 'OrderController');
-routeController('kitchen', 'KitchenController');
-routeController('reservation', 'ReservationController');
-routeController('report', 'ReportController');
+// Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+    Route::get('dashboard', 'PagesController@index');
+    routeController('menu', 'MenuController');
+    routeController('table', 'TableController');
+    routeController('order', 'OrderController');
+    routeController('kitchen', 'KitchenController');
+    routeController('reservation', 'ReservationController');
+    routeController('report', 'ReportController');
+// });
 
 
 // Demo routes
@@ -36,3 +41,7 @@ Route::get('/icons/svg', 'PagesController@svg');
 
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');

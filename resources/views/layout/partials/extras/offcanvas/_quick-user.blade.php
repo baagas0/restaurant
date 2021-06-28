@@ -7,7 +7,7 @@
 	<div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
 		<h3 class="font-weight-bold m-0">
 			User Profile
-			<small class="text-muted font-size-sm ml-2">12 messages</small>
+			{{-- <small class="text-muted font-size-sm ml-2">12 messages</small> --}}
 		</h3>
 		<a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
 			<i class="ki ki-close icon-xs text-muted"></i>
@@ -19,15 +19,15 @@
 		{{-- Header --}}
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
-                <div class="symbol-label" style="background-image:url('{{ asset('media/users/300_21.jpg') }}')"></div>
+                <div class="symbol-label" style="background-image:url('{{ asset('media/svg/humans/custom-14.svg') }}')"></div>
 				<i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-					James Jones
+					{{ auth()->user()->name }}
 				</a>
                 <div class="text-muted mt-1">
-                    Application Developer
+                    Manager Cafe
                 </div>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
@@ -48,7 +48,7 @@
 		{{-- Nav --}}
 		<div class="navi navi-spacer-x-0 p-0">
 		    {{-- Item --}}
-		    <a href="#" class="navi-item">
+		    <a href="{{ route('report') }}" class="navi-item">
 		        <div class="navi-link">
 		            <div class="symbol symbol-40 bg-light mr-3">
 		                <div class="symbol-label">
@@ -57,10 +57,10 @@
 		            </div>
 		            <div class="navi-text">
 		                <div class="font-weight-bold">
-		                    My Profile
+		                    Profile Saya
 		                </div>
 		                <div class="text-muted">
-		                    Account settings and more
+		                    Pengaturan akun
 		                    <span class="label label-light-danger label-inline font-weight-bold">update</span>
 		                </div>
 		            </div>
@@ -68,7 +68,7 @@
 		    </a>
 
 		    {{-- Item --}}
-		    <a href="#"  class="navi-item">
+		    <a href="{{ route('report') }}"  class="navi-item">
 		        <div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
 						<div class="symbol-label">
@@ -77,17 +77,17 @@
 				   	</div>
 		            <div class="navi-text">
 		                <div class="font-weight-bold">
-		                    My Messages
+		                    Statistik Cafe
 		                </div>
 		                <div class="text-muted">
-		                    Inbox and tasks
+		                    Menampilkan statistik dan laporan cafe
 		                </div>
 		            </div>
 		        </div>
 		    </a>
 
 		    {{-- Item --}}
-		    <a href="#"  class="navi-item">
+		    <a href="{{ route('report') }}"  class="navi-item">
 		        <div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
 						<div class="symbol-label">
@@ -96,18 +96,26 @@
 				   	</div>
 		            <div class="navi-text">
 		                <div class="font-weight-bold">
-		                    My Activities
+		                    Log aktifitas
 		                </div>
 		                <div class="text-muted">
-		                    Logs and notifications
+		                    Menampilkan riwayat log
 		                </div>
 		            </div>
 		        </div>
 		    </a>
 
 		    {{-- Item --}}
+		    <form method="POST" action="{{ route('logout') }}">
+		    	@csrf
+		    	<a href="{{ route('logout') }}"
+		    	onclick="event.preventDefault();
+		    	this.closest('form').submit();" style="width: 100%;" class="btn bg-light-danger btn-text-dark-50 btn-icon-primary font-weight-bold btn-hover-bg-light">
+		    	<i class="flaticon2-pie-chart"></i> Logout
+		    </a>
+		</form>
 		    <a href="#" class="navi-item">
-		        <div class="navi-link">
+		        {{-- <div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
 						<div class="symbol-label">
 							{{ Metronic::getSVG("media/svg/icons/Communication/Mail-opened.svg", "svg-icon-md svg-icon-primary") }}
@@ -121,7 +129,7 @@
 		                    latest tasks and projects
 		                </div>
 		            </div>
-		        </div>
+		        </div> --}}
 		    </a>
 		</div>
 
@@ -132,7 +140,7 @@
 		<div>
 			{{-- Heading --}}
         	<h5 class="mb-5">
-            	Recent Notifications
+            	Notifikasi
         	</h5>
 
 			{{-- Item --}}
@@ -142,51 +150,37 @@
 	            </span>
 
 	            <div class="d-flex flex-column flex-grow-1 mr-2">
-	                <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Another purpose persuade</a>
-	                <span class="text-muted font-size-sm">Due in 2 Days</span>
+	                <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Pendapatan</a>
+	                <span class="text-muted font-size-sm">Hari ini</span>
 	            </div>
 
-	            <span class="font-weight-bolder text-warning py-1 font-size-lg">+28%</span>
+	            <span class="font-weight-bolder text-warning py-1 font-size-lg">IDR {{ number_format(2560000) }}</span>
 	        </div>
 
 	        {{-- Item --}}
 	        <div class="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
 	            <span class="svg-icon svg-icon-success mr-5">
-	                {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-lg") }}
+	                {{ Metronic::getSVG("media/svg/icons/Home/Library.svg", "svg-icon-lg") }}
 	            </span>
 	            <div class="d-flex flex-column flex-grow-1 mr-2">
-	                <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Would be to people</a>
-	                <span class="text-muted font-size-sm">Due in 2 Days</span>
+	                <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Pendapatan</a>
+	                <span class="text-muted font-size-sm">Kemarin</span>
 	            </div>
 
-	            <span class="font-weight-bolder text-success py-1 font-size-lg">+50%</span>
+	            <span class="font-weight-bolder text-success py-1 font-size-lg">IDR {{ number_format(3750000) }}</span>
 	        </div>
 
 	        {{-- Item --}}
 	        <div class="d-flex align-items-center bg-light-danger rounded p-5 gutter-b">
 	            <span class="svg-icon svg-icon-danger mr-5">
-	                {{ Metronic::getSVG("media/svg/icons/Communication/Group-chat.svg", "svg-icon-lg") }}
+	                {{ Metronic::getSVG("media/svg/icons/Home/Library.svg", "svg-icon-lg") }}
 	            </span>
 	            <div class="d-flex flex-column flex-grow-1 mr-2">
-	                <a href="#" class="font-weight-normel text-dark-75 text-hover-primary font-size-lg mb-1">Purpose would be to persuade</a>
-	                <span class="text-muted font-size-sm">Due in 2 Days</span>
+	                <a href="#" class="font-weight-normel text-dark-75 text-hover-primary font-size-lg mb-1">Pendapatan</a>
+	                <span class="text-muted font-size-sm">2 Hari yang lalu</span>
 	            </div>
 
-	            <span class="font-weight-bolder text-danger py-1 font-size-lg">-27%</span>
-	        </div>
-
-	        {{-- Item --}}
-	        <div class="d-flex align-items-center bg-light-info rounded p-5">
-	            <span class="svg-icon svg-icon-info mr-5">
-	                {{ Metronic::getSVG("media/svg/icons/General/Attachment2.svg", "svg-icon-lg") }}
-	            </span>
-
-	            <div class="d-flex flex-column flex-grow-1 mr-2">
-	                <a href="#" class="font-weight-normel text-dark-75 text-hover-primary font-size-lg mb-1">The best product</a>
-	                <span class="text-muted font-size-sm">Due in 2 Days</span>
-	            </div>
-
-	            <span class="font-weight-bolder text-info py-1 font-size-lg">+8%</span>
+	            <span class="font-weight-bolder text-danger py-1 font-size-lg">IDR {{ number_format(2350000) }}</span>
 	        </div>
 		</div>
     </div>
