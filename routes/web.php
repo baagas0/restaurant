@@ -16,7 +16,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 })->name('homepage');
 
-// Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('dashboard', 'PagesController@index');
     routeController('menu', 'MenuController');
     routeController('table', 'TableController');
@@ -24,7 +24,7 @@ Route::get('/', function () {
     routeController('kitchen', 'KitchenController');
     routeController('reservation', 'ReservationController');
     routeController('report', 'ReportController');
-// });
+});
 
 
 // Demo routes
