@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\MenuOrder;
+use DB;
 
 class PagesController extends Controller
 {
     public function index()
     {
         $page_title = 'Dashboard';
-        $page_description = 'Some description for the page';
+        // $page_description = 'Some description for the page';
+        $menu_order = MenuOrder::groupBy('menu_id')
+        ->selectRaw('*, sum(amount) as incomeOfMenu, count(*) as orderCount')
+        ->get();
 
-        return view('pages.dashboard', compact('page_title', 'page_description'));
+        // dd($menu_order);
+        return view('dashboard', compact('page_title', 'menu_order'));
     }
 
     /**

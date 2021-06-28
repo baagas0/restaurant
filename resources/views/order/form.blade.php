@@ -64,7 +64,7 @@
                                                         <div class="form-group row">
                                                             <div style="display:none;" id="tc{{ $menu->id }}">
                                                                 <div class="col-lg-12 col-md-9 col-sm-12">
-                                                                    <input type="text" class="form-control menu_order" value="" menu-id="{{ $menu->id }}" menu-price="{{ $menu->price }}" name="menu[{{ $menu->id }}][order_amount]" placeholder="How many?"/>
+                                                                    <input type="text" class="form-control menu_order" value="0" menu-id="{{ $menu->id }}" menu-price="{{ $menu->price }}" name="menu[{{ $menu->id }}][order_amount]" placeholder="How many?" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -79,7 +79,7 @@
                                 @endforeach
                             </div>
                             <div class="form-group">
-                                <label>Amount<span class="text-danger">*</span></label>
+                                <label>Amount</label>
                                 <input type="text" name="amount" disabled="" id="amount" class="form-control" value="{{ isset($order) ? $order->amount : '' }}" placeholder="Please select a menu" />
                                 <span class="form-text text-muted">Automatically filled by system.</span>
                             </div>
@@ -141,6 +141,7 @@ var KTKBootstrapTouchspin = function() {
             max: 100,
             step: 1,
             boostat: 1,
+            booster: false,
             maxboostedstep: 1,
         }).on('touchspin.on.startupspin', function () {
             subTotal = parseInt(subTotal) + parseInt($(this).attr('menu-price'));

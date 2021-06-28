@@ -19,6 +19,7 @@ routeController('table', 'TableController');
 routeController('order', 'OrderController');
 routeController('kitchen', 'KitchenController');
 routeController('reservation', 'ReservationController');
+routeController('report', 'ReportController');
 
 
 // Demo routes

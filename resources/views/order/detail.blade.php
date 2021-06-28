@@ -1,6 +1,6 @@
 {{-- Extends layout --}}
 @extends('layout.default')
-@section('page_title', $data->customer_name)
+@section('page_title', 'Pesanan '.$data->customer_name)
 @section('page_description')
 {{-- <span class="label label-{{ !$data->transaction()->exists() ? 'danger' : 'success'}} label-inline font-weight-normal mr-2">{{ !$data->transaction()->exists() ? 'Pending Payment' : 'Payed'}}</span> --}}
 @endsection

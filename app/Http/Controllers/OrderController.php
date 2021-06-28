@@ -12,11 +12,7 @@ use Auth;
 class OrderController extends Controller
 {
     public function getIndex() {
-        $order = Order::with('transaction')->find(2);
-
-        dd($order);
-
-        return redirect()->route('order.add');
+        return redirect()->route('order.type', 'active');
     }
     public function getType($type) {
         // Add your magic code here
@@ -122,7 +118,7 @@ class OrderController extends Controller
         $update = MenuOrder::findOrFail($request->id);
         $order = Order::findOrFail($update->order_id);
 
-        if (!empty($order->transaction)) {
+        if ($order->transaction()->exists()) {
             return 'transaction exist';
         }
 
@@ -183,12 +179,12 @@ class OrderController extends Controller
                 }
             }
 
-            return redirect()->route('order.type', 'success')->with([
+            return redirect()->route('order.type', 'active')->with([
                 'type' => 'success',
                 'msg' => 'Order disimpan'
             ]);
         }else{
-            return redirect()->route('order.type', 'success')->with([
+            return redirect()->route('order.type', 'active')->with([
                 'type' => 'danger',
                 'msg' => 'Err.., Terjadi Kesalahan'
             ]);

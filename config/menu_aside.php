@@ -28,19 +28,19 @@ return [
         //     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
         //     // 'bullet' => 'line',
         //     'root' => true,
-        //     'page' => '/table',
+        //     'page' => 'table',
         //     'new-tab' => false,
         // ],
         [
             'title' => 'Reservasi',
             'desc' => '',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'icon' => 'flaticon2-calendar-2',
             'bullet' => 'dot',
             'submenu' => [
                 [
                     // Menampilkan jadwal dengan view kalender
                     'title' => 'Jadwal',
-                    'page' => '/reservation/schedulle',
+                    'page' => 'reservation/schedulle',
                 ],
 
             ]
@@ -53,40 +53,39 @@ return [
         [
             // Menampilkan data pada bulan ini saja
             'title' => 'Order',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-            'bullet' => 'line',
+            'icon' => 'flaticon2-shopping-cart-1',
             'root' => true,
             'submenu' => [
                 [
                     'title' => 'New',
                     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-                    'bullet' => 'line',
+                    'bullet' => 'dot',
                     'root' => true,
-                    'page' => '/order/add',
+                    'page' => 'order/add',
                     'new-tab' => false,
                 ],
                 [
                     'title' => 'Aktif',
                     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-                    'bullet' => 'line',
+                    'bullet' => 'dot',
                     'root' => true,
-                    'page' => '/order/type/active',
+                    'page' => 'order/type/active',
                     'new-tab' => false,
                 ],
                 [
                     'title' => 'Pembayaran Terunda',
                     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-                    'bullet' => 'line',
+                    'bullet' => 'dot',
                     'root' => true,
-                    'page' => '/order/type/pending-payment',
+                    'page' => 'order/type/pending-payment',
                     'new-tab' => false,
                 ],
                 [
                     'title' => 'Pembayaran Berhasil',
                     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-                    'bullet' => 'line',
+                    'bullet' => 'dot',
                     'root' => true,
-                    'page' => '/order/type/success-payment',
+                    'page' => 'order/type/success-payment',
                     'new-tab' => false,
                 ],
             ],
@@ -99,9 +98,9 @@ return [
         [
             // menampilkan informasi makanan yang dipesan pembeli
             'title' => 'Pesanan Aktif',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'icon' => 'flaticon2-delivery-package',
             'root' => true,
-            'page' => '/kitchen/type/active',
+            'page' => 'kitchen/type/active',
             'new-tab' => false,
         ],
 
@@ -114,10 +113,10 @@ return [
         [
             // menampilkan laporan by date
             'title' => 'Laporan',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'icon' => 'flaticon2-analytics-2',
             'bullet' => 'line',
             'root' => true,
-            'page' => '/report',
+            'page' => 'report',
             'new-tab' => false,
         ],
     ]
